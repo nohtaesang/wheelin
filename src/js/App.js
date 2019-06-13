@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 // actions
@@ -10,9 +10,6 @@ import SimilarSection from 'js/components/similarSection';
 function App(props) {
 	const { feProblems, feSimilars, selectedProblem } = props;
 	const { getFeData, setFeProblems, setSelectedProblem, setFeSimilars } = props;
-
-	console.log('feProblems: ', feProblems);
-	console.log('feSimilars: ', feSimilars);
 
 	useEffect(
 		() => {

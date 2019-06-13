@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Similar = props => {
@@ -12,7 +12,7 @@ const Similar = props => {
 		setFeSimilars,
 		setSelectedProblem
 	} = props;
-	const { id, problemType, unitName, problemURL } = similar;
+	const { problemType, unitName, problemURL } = similar;
 
 	const onClickAdd = () => {
 		const nextFeSimilars = feSimilars.slice();

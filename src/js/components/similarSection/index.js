@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Similar from 'js/components/similar';
 
 const ProblemSection = props => {
 	const { feSimilars, selectedProblem, setFeSimilars, feProblems, setFeProblems, setSelectedProblem } = props;
-	console.log(feSimilars);
 	return (
 		<Wrap>
 			<div className="section-label">문항 교체/추가</div>

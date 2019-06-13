@@ -1,4 +1,4 @@
-import { put, takeLatest, all } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 import config from 'js/static/config';
 import { dataActions } from '../actions/data';
@@ -10,7 +10,6 @@ export function* watchGetFeData() {
 
 function* getFeData() {
 	const { feProblemsUrl, feSimilarsUrl } = config;
-	const headers = { headers: { 'Content-Type': 'application/json' } };
 	// try {
 	// 	const feProblem = yield axios.get(feProblemsUrl);
 	// 	const feSimilars = yield axios.get(feSimilarsUrl);
