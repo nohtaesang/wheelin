@@ -36,6 +36,7 @@ function App(props) {
 				selectedProblem={selectedProblem}
 				setFeSimilars={setFeSimilars}
 				feProblems={feProblems}
+				setSelectedProblem={setSelectedProblem}
 			/>
 		</Wrap>
 	);

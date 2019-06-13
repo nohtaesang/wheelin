@@ -11,8 +11,9 @@ const Problem = props => {
 
 	const onClickDeleteProblem = () => {
 		const nextFeProblems = feProblems.slice();
-		nextFeProblems.splice(index, 1);
+		const deletedProblem = nextFeProblems.splice(index, 1)[0];
 		setFeProblems(nextFeProblems);
+		if (deletedProblem.id === selectedProblem) setSelectedProblem(null);
 	};
 
 	return (

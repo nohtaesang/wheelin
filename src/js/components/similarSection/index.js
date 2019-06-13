@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Similar from 'js/components/similar';
 
 const ProblemSection = props => {
-	const { feSimilars, selectedProblem, setFeSimilars, feProblems, setFeProblems } = props;
+	const { feSimilars, selectedProblem, setFeSimilars, feProblems, setFeProblems, setSelectedProblem } = props;
 	console.log(feSimilars);
 	return (
 		<Wrap>
@@ -19,6 +19,7 @@ const ProblemSection = props => {
 						setFeSimilars={setFeSimilars}
 						feProblems={feProblems}
 						setFeProblems={setFeProblems}
+						setSelectedProblem={setSelectedProblem}
 					/>
 				))
 			) : (

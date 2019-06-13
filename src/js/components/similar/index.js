@@ -8,29 +8,47 @@ const Similar = props => {
 		feProblems,
 		feSimilars,
 		setFeProblems,
-		setSelectedProblem,
 		selectedProblem,
-		setFeSimilars
+		setFeSimilars,
+		setSelectedProblem
 	} = props;
 	const { id, problemType, unitName, problemURL } = similar;
 
 	const onClickAdd = () => {
-		const nextFeProblems = feProblems.slice();
 		const nextFeSimilars = feSimilars.slice();
-		const addedProblem = nextFeSimilars.splice(index, 1)[0];
 
-		// 사이에 넣기
-		nextFeProblems.push(addedProblem);
+		const addedSimilar = nextFeSimilars.splice(index, 1)[0];
+
+		const problemIndex = feProblems.findIndex(p => p.id === selectedProblem);
+		const nextFeProblems = feProblems
+			.slice(0, problemIndex + 1)
+			.concat(addedSimilar)
+			.concat(feProblems.slice(problemIndex + 1));
+
 		setFeProblems(nextFeProblems);
 		setFeSimilars(nextFeSimilars);
 	};
 	const onClickChange = () => {
 		const nextFeProblems = feProblems.slice();
+		const problemIndex = feProblems.findIndex(p => p.id === selectedProblem);
+		const addedProblem = nextFeProblems.splice(problemIndex, 1)[0];
+
 		const nextFeSimilars = feSimilars.slice();
-		console.log(selectedProblem, index);
-		const problemIndex = nextFeProblems.findIndex(p => p.id === selectedProblem);
-		// 교체하기
-		console.log(problemIndex);
+		const addedSimilar = nextFeSimilars.splice(index, 1)[0];
+
+		setFeProblems(
+			feProblems
+				.slice(0, problemIndex)
+				.concat(addedSimilar)
+				.concat(feProblems.slice(problemIndex + 1))
+		);
+		setFeSimilars(
+			feSimilars
+				.slice(0, index)
+				.concat(addedProblem)
+				.concat(feSimilars.slice(index + 1))
+		);
+		setSelectedProblem(addedSimilar.id);
 	};
 
 	return (
@@ -39,10 +57,7 @@ const Similar = props => {
 				<div className="problem-type">{problemType}</div>
 				<div className="unit-name">{unitName}</div>
 				<div className="problem-header-btn-from">
-					<button
-						className={`similar-btn btn ${selectedProblem === id ? 'active' : ''}`}
-						onClick={onClickAdd}
-					>
+					<button className={`similar-btn btn`} onClick={onClickAdd}>
 						추가
 					</button>
 					<button className="delete-btn btn" onClick={onClickChange}>
